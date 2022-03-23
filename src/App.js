@@ -4,10 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <div class="container">
-        <div class="playlist-item">
+      <div className="container">
+        <div className="playlist-item">
           <img src={data.album.images[0].url} />
-          <div class="playlist-content">
+          <div className="playlist-content">
             <p>{data.name}</p>
             <p>{data.album.name}</p>
             <p>{data.artists[0].name}</p>
