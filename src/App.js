@@ -13,7 +13,7 @@ function App() {
             <p>{data.artists[0].name}</p>
           </div>
         </div>
-        <button>Play</button>
+        <button>Select</button>
       </div>
     </div>
   );
