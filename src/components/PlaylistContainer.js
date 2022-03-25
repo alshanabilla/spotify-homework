@@ -7,7 +7,7 @@ function PlaylistContainer() {
   return (
     <div className="playlist-container">
       <PlaylistItem
-        image={album?.images[0]?.url}
+        image={album.images[0].url}
         songName={songName}
         albumName={album?.name}
         artists={artists}
