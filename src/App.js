@@ -1,20 +1,11 @@
-import data from './data.js'
 import './App.css';
+import PlaylistContainer from './components/PlaylistContainer.js';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <div className="playlist-item">
-          <img src={data.album.images[0].url} />
-          <div className="playlist-content">
-            <p>{data.name}</p>
-            <p>{data.album.name}</p>
-            <p>{data.artists[0].name}</p>
-          </div>
-        </div>
-        <button>Select</button>
-      </div>
+    <div className="app">
+      <h1 className="title">Create Playlist</h1>
+      <PlaylistContainer />
     </div>
   );
 }
