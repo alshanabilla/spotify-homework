@@ -1,0 +1,40 @@
+.playlist-card {
+    width: 200px;
+    border: 1px solid #EEEEEE;
+    border-radius: 10px;
+    float: left;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.playlist-card_image {
+    width: 100%;
+}
+
+.playlist-card_image > img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.playlist-card_data {
+    padding: 12px;
+}
+
+.playlist-card_content {
+    height: 67px;
+}
+
+.playlist-card_title {
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+.playlist-card_artist {
+    margin-top: 4px;
+}
+
+.playlist-card_action {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
