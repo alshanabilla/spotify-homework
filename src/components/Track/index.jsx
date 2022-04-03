@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './index.css';
 
-function Track({ imageUrl, title, artist, toggleSelect }) {
-  const [isSelected, setIsSelected] = useState(false);
+function Track({ imageUrl, title, artist, toggleSelect, select}) {
+  const [isSelected, setIsSelected] = useState(select);
 
   const handleToggleSelect = () => {
     setIsSelected(!isSelected);
