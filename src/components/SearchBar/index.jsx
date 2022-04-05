@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import config from '../../lib/config';
-import './index.css';
 import { searchTrack } from '../../lib/fetchApi';
-import { toast } from 'react-toastify';
+import { useSelector } from "react-redux";
+import './index.css';
 
-function SearchBar({ accessToken, onSuccess }) {
+function SearchBar({ onSuccess }) {
+  const accessToken = useSelector((state) => state.auth.accessToken);
   const [text, setText] = useState('');
 
   const handleInput = (e) => {
@@ -20,7 +20,7 @@ function SearchBar({ accessToken, onSuccess }) {
       const tracks = response.tracks.items;
       onSuccess(tracks);
     } catch (e) {
-      toast.error(e);
+      alert(e);
     }
   }
 

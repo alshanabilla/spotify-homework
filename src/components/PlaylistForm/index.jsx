@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { toast } from 'react-toastify';
+import { useSelector } from "react-redux";
 import { addTracksToPlaylist, createPlaylist } from '../../lib/fetchApi';
 
-function CreatePlaylist ({ accessToken, userId, uriTracks }) {
+function CreatePlaylist ({ userId, uriTracks }) {
+  const accessToken = useSelector((state) => state.auth.accessToken);
+
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -56,14 +58,14 @@ function CreatePlaylist ({ accessToken, userId, uriTracks }) {
 
           await addTracksToPlaylist(accessToken, responseCreatePlaylist.id, uriTracks);
 
-          toast.success('Playlist created successfully');
+          alert("Playlist created successfully");
 
           setForm({ title: '', description: '' });
         } catch (error) {
-          toast.error(error);
+          alert(e);
         }
       } else {
-        toast.error('Please select at least one track');
+        alert("Please select at least one track")
       }
     }
   }
@@ -72,41 +74,27 @@ function CreatePlaylist ({ accessToken, userId, uriTracks }) {
         <div>
             <h1>Create Playlist</h1>
             <form onSubmit={handleSubmit}>
-            <div className="row">
-                <div className="col-25">
-                  <label htmlFor="title">Title : </label>
-                </div>
-                <div className="col-75">
-                  <input 
+                <label htmlFor="title">Title : </label>
+                <input 
                     type="text" 
-                    id="title" 
+                    id="title"
                     name="title" 
                     value={form.title} 
                     onChange={handleChange}
                     error={errorForm.title} 
-                    required/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-25">
-                  <label htmlFor="description">Description : </label>
-                </div>
-                <div className="col-75">
-                  <textarea
+                    required
+                /><br />
+                <label htmlFor="description">Description : </label>
+                <textarea
+                    value={form.description}
                     id="description"
                     name="description"
-                    style="height: 200px;"
-                    value={form.description}
                     onChange={handleChange}
                     error={errorForm.description}
                     required
-                  ></textarea>
-                </div>
-              </div>
-              <br />
-              <div className="row">
+                />
+                <br />
                 <button type="submit">Create</button>
-              </div>
             </form>
         </div>
     )

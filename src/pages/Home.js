@@ -5,23 +5,24 @@ import config from '../lib/config';
 import CreatePlaylist from '../components/PlaylistForm';
 import { getUserProfile } from '../lib/fetchApi';
 import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from "../slice/auth-slice";
 
 function Home() {
-  const [accessToken, setAccessToken] = useState('');
-  const [isAuthorize, setIsAuthorize] = useState(false);
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isInSearch, setIsInSearch] = useState(false);
   const [user, setUser] = useState({});
+  const isAuthorize = useSelector((state) => state.auth.isAuthorize);
+  const dispatch = useDispatch();
 
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
 
     if (accessTokenParams !== null) {
-      setAccessToken(accessTokenParams);
-      setIsAuthorize(true);
+      dispatch(login(accessTokenParams));
 
       const setUserProfile = async () => {
         try {
@@ -29,7 +30,7 @@ function Home() {
 
           setUser(response);
         } catch (e) {
-          toast.error(e);
+          alert(e);
         }
       }
 
@@ -82,13 +83,11 @@ function Home() {
       {isAuthorize && (
         <div>
           <CreatePlaylist
-            accessToken={accessToken}
             userId={user.id}
             uriTracks={selectedTracksUri}
           />
           <hr />
           <SearchBar
-              accessToken={accessToken}
               onSuccess={onSuccessSearch}
           />
         <div className="playlist-content">
@@ -107,7 +106,7 @@ function Home() {
               ))}
             </div>
           </div>
-      </div> 
+        </div> 
           )}        
     </>
   );
