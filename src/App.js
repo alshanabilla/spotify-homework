@@ -3,7 +3,7 @@ import { Router } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import Auth from './pages/Auth';
+import Authorize from './pages/Auth';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
             <Home />
           </Router>
           <Router exact path="/">
-          <Auth />
+          <Authorize />
           </Router>
         </Switch>
       
