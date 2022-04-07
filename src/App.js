@@ -1,15 +1,27 @@
+import { Switch } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import { Provider } from "react-redux";
-import store from "./store";
+import Auth from './pages/Auth';
+
 
 function App() {
   return (
+    
     <div className="app">
-      {/* <h1 className="title">Playlist</h1> */}
-      <Provider store={store}>
-        <Home />
-      </Provider>
+      <BrowserRouter>
+        <Switch>
+          <Router exact path="/create-playlist">
+            <Home />
+          </Router>
+          <Router exact path="/">
+          <Auth />
+          </Router>
+        </Switch>
+      
+      </BrowserRouter>
+      
     </div>
   );
 }
