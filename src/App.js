@@ -12,12 +12,11 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Switch>
-          <Router exact path="/create-playlist">
+          {/* <Router exact path="/create-playlist">
             <Home />
-          </Router>
-          <Router exact path="/">
-          <Authorize />
-          </Router>
+          </Router> */}
+          <Router exact path="/create-playlist" component={Home}/>
+          <Router exact path="/" component={Authorize} />
         </Switch>
       
       </BrowserRouter>

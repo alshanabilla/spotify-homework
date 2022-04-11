@@ -5,11 +5,13 @@ export const authSlice = createSlice({
     initialState: {
         accessToken: '',
         isAuthorize: false,
+        user: {},
     },
     reducers: {
         login: (state, action) => {
             state.accessToken = action.payload;
             state.isAuthorize = true;
+            state.user = action.payload.user;
         }
     }
 });

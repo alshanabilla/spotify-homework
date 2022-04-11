@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addTracksToPlaylist, createPlaylist } from '../../lib/fetchApi';
+import { logout } from '../../slice/auth-slice';
 
-function CreatePlaylist ({ userId, uriTracks }) {
+function CreatePlaylist ({ uriTracks }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
+  const userId = useSelector((state) => state.auth.user.id);
+  const dispatch = useDispatch();
 
   const [form, setForm] = useState({
     title: '',
@@ -28,7 +31,7 @@ function CreatePlaylist ({ userId, uriTracks }) {
     if (form.title.length < 10) {
       setErrorForm({
         ...errorForm,
-        title: 'Title must be at least 10 characters long'
+        title: 'Title must be at least 10 characters long',
       });
       isValid = false;
     }
@@ -36,7 +39,7 @@ function CreatePlaylist ({ userId, uriTracks }) {
     if (form.description.length > 100) {
       setErrorForm({
         ...errorForm,
-        description: 'Description must be at least 10 characters long'
+        description: 'Description must be at least 10 characters long',
       });
       isValid = false;
     }
@@ -61,11 +64,15 @@ function CreatePlaylist ({ userId, uriTracks }) {
           alert("Playlist created successfully");
 
           setForm({ title: '', description: '' });
-        } catch (error) {
-          alert(e);
+        } catch (e) {
+          if (e.response.status === 401) {
+            dispatch(logout());
+          } else {
+            alert(e);
+          }
         }
       } else {
-        alert("Please select at least one track")
+        alert("Please select at least one track");
       }
     }
   }

@@ -22,7 +22,9 @@ function Track({ imageUrl, title, artist, toggleSelect, select}) {
         </div>
         
         <div className="playlist-card_action">
-          <button onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</button>
+          <button onClick={handleToggleSelect}>
+            {isSelected ? 'Deselect' : 'Select'}
+          </button>
         </div>
       </div>
     </div>

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Track from '../components/Track';
 import SearchBar from '../components/SearchBar';
-import config from '../lib/config';
 import CreatePlaylist from '../components/PlaylistForm';
-import { getUserProfile } from '../lib/fetchApi';
-import { useSelector } from 'react-redux';
 
 function Home() {
   const [tracks, setTracks] = useState([]);
