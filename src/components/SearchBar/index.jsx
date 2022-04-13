@@ -3,6 +3,8 @@ import { searchTrack } from '../../lib/fetchApi';
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from '../../slice/auth-slice';
 import './index.css';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 function SearchBar({ onSuccess }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -33,15 +35,11 @@ function SearchBar({ onSuccess }) {
   return (
     <div>
       <form className="form-search" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="form-search_input"
-          required
-          value={text}
-          onChange={handleInput}
-        />
-        <button type="submit">Search</button>
+        <TextField className="form-search_input" id="outlined-search" label="Search" type="search" variant="outlined" value={text}
+          onChange={handleInput} />
+        <Button variant="contained" type="submit" color="primary">
+          Search
+        </Button>
       </form>
     </div>
   )
