@@ -90,6 +90,8 @@ function CreatePlaylist ({ uriTracks }) {
                     onChange={handleChange}
                     error={errorForm.title} 
                     required
+                    data-testid="title-playlist"
+                    
                 /><br />
                 <label htmlFor="description">Description : </label>
                 <textarea
@@ -99,9 +101,10 @@ function CreatePlaylist ({ uriTracks }) {
                     onChange={handleChange}
                     error={errorForm.description}
                     required
+                    data-testid="description-playlist"
                 />
                 <br />
-                <button type="submit">Create</button>
+                <button type="submit" data-testid="btn-create-playlist">Create</button>
             </form>
         </div>
     )
