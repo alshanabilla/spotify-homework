@@ -8,7 +8,6 @@ function Home() {
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isInSearch, setIsInSearch] = useState(false);
-  const [user] = useState({});
 
   useEffect(() => {
     if (!isInSearch) {
@@ -40,7 +39,6 @@ function Home() {
     <>
         <div className='container'>
           <CreatePlaylist
-            userId={user.id}
             uriTracks={selectedTracksUri}
           />
           <hr />

@@ -9,7 +9,7 @@ interface IinitialState {
 const initialState: IinitialState = {
     accessToken: '',
     isAuthorize: false,
-    user: {},
+    user: null,
 }
 
 export const authSlice = createSlice({
@@ -20,11 +20,13 @@ export const authSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.isAuthorize = true;
             state.user = action.payload.user;
+
         },
-        logout: (state, _) => {
+        logout: (state) => {
             state.accessToken = '';
             state.isAuthorize = false;
-            state.user = {};
+            state.user = null;
+
         }
     }
 });

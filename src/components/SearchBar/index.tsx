@@ -54,7 +54,7 @@ const SearchBar: React.FC<Props> = ({ onSuccess }) => {
       onSuccess(tracks);
     } catch (e) {
       if (e) {
-        dispatch(logout(null));
+        dispatch(logout());
       } else {
         alert(e);
       }

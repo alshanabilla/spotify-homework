@@ -48,7 +48,7 @@ export default function Authorize() {
 
   return (
     <div className="container">
-      <button href={getSpotifyLinkAuthorize()} external>Authorize</button>
+      <button href={getSpotifyLinkAuthorize()}>Authorize</button>
     </div>
   )
 }
